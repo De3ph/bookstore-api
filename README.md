@@ -62,11 +62,16 @@ $ npm run test:cov
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+## .env
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Create .env file in the root directory of the project. .env file should include these properties:
+```
+MONGO_CONNECTION_STRING=
+MONGO_DATABASE_NAME=
+```
+
+Note: If you connect to MongoDB locally, replace 'localhost' with '127.0.0.1'
+
 
 ## License
 
