@@ -72,6 +72,9 @@ MONGO_DATABASE_NAME=
 
 Note: If you connect to MongoDB locally, replace 'localhost' with '127.0.0.1'
 
+## API Documentation
+
+Swagger API documentation is available on `http://localhost:3000/api` route.
 
 ## License
 
