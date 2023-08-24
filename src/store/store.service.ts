@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateStoreDto } from './dto/createStoreDto';
@@ -18,7 +18,7 @@ export class StoreService {
     try {
       return await new this.storeModel(createStoreDto).save();
     } catch (error) {
-      throw new HttpException(error?.message, HttpStatus.CONFLICT);
+      throw new BadRequestException(error?.message);
     }
   }
 }

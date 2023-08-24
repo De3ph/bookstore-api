@@ -66,8 +66,8 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Create .env file in the root directory of the project. .env file should include these properties:
 ```
-MONGO_CONNECTION_STRING=
-MONGO_DATABASE_NAME=
+MONGO_CONNECTION_STRING=XXX
+MONGO_DATABASE_NAME=XXX
 ```
 
 Note: If you connect to MongoDB locally, replace 'localhost' with '127.0.0.1'
