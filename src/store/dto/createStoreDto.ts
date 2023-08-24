@@ -1,10 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsArray, ValidateNested } from 'class-validator';
+import { IsArray, IsString, ValidateNested } from 'class-validator';
 import { LocationDto } from './locationDto';
 import { Type } from 'class-transformer';
 import { CreateBookDto } from 'src/book/dto/createBookDto';
 
 export class CreateStoreDto {
+  @ApiProperty()
+  @IsString()
+  branchCode: string;
+
   @ApiProperty()
   @ValidateNested()
   @Type(() => LocationDto)

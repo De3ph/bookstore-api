@@ -1,7 +1,7 @@
-import { CreateStoreDto } from './dto/createStoreDto';
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { CreateStoreDto } from './dto/createStoreDto';
 import { Store } from 'src/schemas/store.schema';
 
 @Injectable()
@@ -15,7 +15,10 @@ export class StoreService {
   }
 
   async create(createStoreDto: CreateStoreDto) {
-    const store = new this.storeModel(createStoreDto);
-    return await store.save();
+    try {
+      return await new this.storeModel(createStoreDto).save();
+    } catch (error) {
+      throw new HttpException(error?.message, HttpStatus.CONFLICT);
+    }
   }
 }

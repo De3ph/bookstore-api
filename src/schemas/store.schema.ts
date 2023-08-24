@@ -7,6 +7,8 @@ export type BookDocument = HydratedDocument<Store>;
 
 @Schema()
 export class Store {
+  @Prop({ unique: true })
+  branchCode: string;
   @Prop({
     type: 'object',
   })
