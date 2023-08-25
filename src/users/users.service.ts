@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { User } from 'src/schemas/user.schema';
 import { CreateUserDto } from './dto/createUserDto';
 import { BcryptService } from 'src/bcrypt/bcrypt.service';
+import { GetUsersDto } from './dto/getUsersDto';
 
 @Injectable()
 export class UsersService {
@@ -12,8 +13,20 @@ export class UsersService {
     @InjectModel(User.name) private readonly userModel: Model<User>,
   ) {}
 
-  async findAll() {
-    return await this.userModel.find();
+  async findAll(): Promise<GetUsersDto> {
+    const res = new GetUsersDto();
+    const users = await this.userModel.find();
+
+    users.forEach((user) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      res.users.push({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+      });
+    });
+
+    return res;
   }
 
   async find(username: string) {
