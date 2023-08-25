@@ -1,19 +1,24 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { BcryptService } from 'src/bcrypt/bcrypt.service';
 import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private userService: UsersService,
-    private jwtService: JwtService,
+    private readonly userService: UsersService,
+    private readonly jwtService: JwtService,
+    private readonly bcryptService: BcryptService,
   ) {}
 
   async validateUser(username: string, password: string) {
     const user = await this.userService.find(username);
+    const isPasswordsMatched = await this.bcryptService.comparePasswords(
+      password,
+      user.password,
+    );
 
-    if (user && user.password === password) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    if (user && isPasswordsMatched) {
       const { username } = user;
       return {
         status: HttpStatus.OK,

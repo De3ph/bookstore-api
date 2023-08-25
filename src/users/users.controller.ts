@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpStatus } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/createUserDto';
 import { FindUserDto } from './dto/findUserDto';
@@ -19,6 +19,7 @@ export class UsersController {
 
   @Post('/create')
   create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+    const isSaved = this.userService.create(createUserDto);
+    return isSaved ? HttpStatus.CREATED : HttpStatus.SERVICE_UNAVAILABLE;
   }
 }

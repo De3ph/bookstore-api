@@ -8,6 +8,7 @@ import { AuthorModule } from './author/author.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { StoreModule } from './store/store.module';
+import { BcryptModule } from './bcrypt/bcrypt.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { StoreModule } from './store/store.module';
     AuthModule,
     UsersModule,
     StoreModule,
+    BcryptModule,
   ],
   controllers: [AppController],
   providers: [AppService],
