@@ -32,6 +32,14 @@
 $ npm install
 ```
 
+## .env
+
+Create .env file in the root directory of the project. .env file should include these properties:
+```
+MONGO_CONNECTION_STRING=XXX
+MONGO_DATABASE_NAME=XXX
+```
+
 ## Running the app
 
 ```bash
@@ -72,31 +80,21 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## .env
-
-Create .env file in the root directory of the project. .env file should include these properties:
-```
-MONGO_CONNECTION_STRING=XXX
-MONGO_DATABASE_NAME=XXX
-```
-
-Note: If you connect to MongoDB locally, replace 'localhost' with '127.0.0.1'
-
 ## API Documentation
 
 Swagger API documentation is available on `http://localhost:3000/api` route.
 
 ## ToDo
-- [ ] More Detailed Documentation
+- [ ] More Detailed Swagger Documentation
 - [ ] Unit Test
 - [ ] Integration Test
 - [ ] E2E Test
 - [x] Dockerize
 - [ ] Front-end??
+
+## Support
+
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
 ## License
 
