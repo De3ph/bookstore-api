@@ -76,6 +76,14 @@ Note: If you connect to MongoDB locally, replace 'localhost' with '127.0.0.1'
 
 Swagger API documentation is available on `http://localhost:3000/api` route.
 
+## ToDo
+- [ ] More Detailed Documentation
+- [ ] Unit Test
+- [ ] Integration Test
+- [ ] E2E Test
+- [ ] Dockerize
+- [ ] Front-end??
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
