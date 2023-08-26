@@ -54,18 +54,16 @@ $ npm run start:prod
 ```
 
 ## Docker
-In order to use Docker container, you should provide same .env files listed below. 
+In order to use Docker container, you should provide same .env properties. 
 ```bash
-# build 
-$ docker build -t nest-bookstore-api .
 
-# create .env file and define variables
-$ touch .env
+# create .env file and define variables.
+$ touch .env.docker
 
 # run
-$ docker run -p 3000:3000 --env-file ./.env nest-bookstore-api
+$ docker-compose up
 ```
-  > Note : If you would like to connect your MongoDB database locally, replace host (which is default ***127.0.0.1***) with ***host.docker.internal***
+  <!-- > Note : If you would like to connect your MongoDB database locally, replace host (which is default ***127.0.0.1***) with ***host.docker.internal*** -->
 
 ## Test
 

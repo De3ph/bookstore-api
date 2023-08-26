@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Author } from 'src/schemas/author.schema';
 import { CreateAuthorDto } from 'src/author/dto/createAuthorDto';
+import { DeleteAuthorDto } from './dto/deleteAuthorDto';
 
 @Injectable()
 export class AuthorService {
@@ -19,5 +20,11 @@ export class AuthorService {
     createAuthorDto.birthDate = new Date(createAuthorDto.birthDate);
     const author = new this.authorModel(createAuthorDto);
     return author.save();
+  }
+
+  async delete(deleteAuthorDto: DeleteAuthorDto) {
+    return this.authorModel.deleteOne({
+      _id: deleteAuthorDto.id,
+    });
   }
 }
