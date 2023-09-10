@@ -10,12 +10,14 @@ import {
 import { BookService } from './book.service';
 import { CreateBookDto } from 'src/book/dto/createBookDto';
 import { UpdateBookDto } from 'src/book/dto/updateBookDto';
+import { ApiOkResponse } from '@nestjs/swagger';
 
 @Controller('book')
 export class BookController {
   constructor(private readonly bookService: BookService) {}
 
   @Get()
+  @ApiOkResponse({ type: [CreateBookDto] })
   getAll() {
     return this.bookService.getAll();
   }
