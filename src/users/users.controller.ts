@@ -2,6 +2,8 @@ import { Controller, Get, Post, Body, HttpStatus } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/createUserDto';
 import { FindUserDto } from './dto/findUserDto';
+import { BorrowBookDto } from './dto/borrowBookDto';
+import { ReleaseBookDto } from './dto/releaseBookDto';
 
 @Controller('users')
 export class UsersController {
@@ -21,5 +23,23 @@ export class UsersController {
   create(@Body() createUserDto: CreateUserDto) {
     const isSaved = this.userService.create(createUserDto);
     return isSaved ? HttpStatus.CREATED : HttpStatus.SERVICE_UNAVAILABLE;
+  }
+
+  @Post('/borrowBook')
+  borrow(@Body() borrowBookDto: BorrowBookDto) {
+    const res = this.userService.borrowBook(
+      borrowBookDto.bookId,
+      borrowBookDto.userId,
+    );
+    return res;
+  }
+
+  @Post('/releaseBook')
+  giveBack(@Body() releaseBookDto: ReleaseBookDto) {
+    const res = this.userService.giveBookBack(
+      releaseBookDto.bookId,
+      releaseBookDto.userId,
+    );
+    return res;
   }
 }

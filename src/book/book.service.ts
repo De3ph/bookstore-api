@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
 import { CreateBookDto } from './dto/createBookDto';
 import { UpdateBookDto } from 'src/book/dto/updateBookDto';
 import { Book } from '../schemas/book.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class BookService {
@@ -29,5 +29,33 @@ export class BookService {
 
   async delete(id: string) {
     return await this.bookModel.deleteOne({ _id: id });
+  }
+
+  async markBookAsBorrowed(id: string) {
+    const book = await this.bookModel.exists({ _id: id });
+    if (!book) {
+      return null;
+    }
+
+    return await this.bookModel.updateOne(
+      { _id: id },
+      {
+        $set: { isBorrowed: true },
+      },
+    );
+  }
+
+  async relaseBorrowedBook(id: string) {
+    const book = await this.bookModel.exists({ _id: id });
+    if (!book) {
+      return null;
+    }
+
+    return await this.bookModel.updateOne(
+      { _id: id },
+      {
+        $set: { isBorrowed: false },
+      },
+    );
   }
 }

@@ -28,6 +28,11 @@ export class Book {
 
   @Prop()
   publisher: string;
+
+  @Prop({
+    default: false,
+  })
+  isBorrowed: boolean;
 }
 
 export const BookSchema = SchemaFactory.createForClass(Book);
