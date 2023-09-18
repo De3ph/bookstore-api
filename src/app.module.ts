@@ -15,9 +15,7 @@ import { BcryptModule } from './bcrypt/bcrypt.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(`${process.env.MONGO_CONNECTION_STRING}`, {
-      dbName: `${process.env.MONGO_DATABASE_NAME}`,
-    }),
+    MongooseModule.forRoot(process.env.MONGO_CONNECTION_STRING),
     BookModule,
     AuthorModule,
     AuthModule,
