@@ -1,11 +1,20 @@
-import { Controller, Get, Post, Body, HttpStatus } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  HttpStatus,
+  UseGuards,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/createUserDto';
 import { FindUserDto } from './dto/findUserDto';
 import { BorrowBookDto } from './dto/borrowBookDto';
 import { ReleaseBookDto } from './dto/releaseBookDto';
+import { SignedInGuard } from 'src/auth/guards/signed-in.guard';
 
 @Controller('users')
+@UseGuards(SignedInGuard)
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
